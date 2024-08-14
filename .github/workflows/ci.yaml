@@ -18,9 +18,13 @@ jobs:
       - run: go run math.go
       - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with: 
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - id: docker_build
         uses: docker/build-push-action@v6
         with:
-          push: false
+          push: true
           tags: jonasloz/ci-go-test:latest
       
