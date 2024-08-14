@@ -2,8 +2,7 @@ FROM golang:latest
 
 WORKDIR /app
 
-COPY ./math_teste.go .
-COPY ./math.go .
+COPY . .
 
 RUN go env -w GO111MODULE=off && \
     go build -o math
